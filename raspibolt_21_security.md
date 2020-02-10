@@ -112,13 +112,12 @@ Follow this guide [Configure “No Password SSH Keys Authentication” with PuTT
   When you're prompted to "Enter a file in which to save the key," press Enter to use the default file location. Optionally, for maximum security, use `password [A]` to protect your key.
 
 * The public key now needs to be copied to the Pi.
-  From your regular computer, create the `.ssh` directory on the Raspberry Pi, copy your public key and set the correct file permissions.
+  From your regular computer run `ssh-copy-id` to copy your public key.
   * use your proper hostname instead of `raspibolt.local`, or use the IP address
   * use the correct filename of your public key instead of `id_rsa.pub`
 
   ```sh
-  $ ssh admin@raspibolt.local 'mkdir -p ~/.ssh'
-  $ cat ~/.ssh/id_rsa.pub | ssh admin@raspibolt.local 'cat >> ~/.ssh/authorized_keys && chmod -R 700 ~/.ssh/'
+  $ ssh-copy-id -i ~/.ssh/id_rsa.pub admin@raspibolt.local
   ```
 
 <script id="asciicast-BvuWd8S8hvBLmsXBW4L2EEeRZ" src="https://asciinema.org/a/BvuWd8S8hvBLmsXBW4L2EEeRZ.js" async></script>
